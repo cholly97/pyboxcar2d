@@ -127,7 +127,7 @@ class Car(object):
         self.pos = pos
         self.vertices, self.wheels = vertices, wheels
         self.spawned = False
-    
+
     def spawn(self, world):
         self.spawned = True
         self.initChassis(world, self.pos,
@@ -240,7 +240,7 @@ class Population(object):
         self.fitnesses[i] = fitness
         if self.allFitnessesGotten():
             prevDef = self.getDef()
-            self.message = ("gen: " + str(self.generation) + 
+            self.message = ("gen: " + str(self.generation) +
                 " avg: " + str(int(round(sum(self.fitnesses)/self.popSize))) +
                 " max: " + str(int(round(max(self.fitnesses)))))
             self.createNextGeneration(world)
@@ -277,7 +277,7 @@ class Population(object):
             self.addNewIndividual(genes2)
             if self.popSize - len(self.newIndividuals) == 1:
                 self.newIndividuals.pop()
-    
+
     def createTournament(self, size, exclude = None):
         indices = list(range(self.popSize))
         if exclude != None: indices.remove(exclude)
@@ -728,7 +728,7 @@ def drawGenData(data):
 def drawCamData(data):
     camStr = "camera: "
     if data.followLeader:
-        camStr = camStr + "leader (car " + str(data.followCar) + ")" 
+        camStr = camStr + "leader (car " + str(data.followCar) + ")"
     else:
         if data.followCar == None:
             camStr = camStr + str(int(round(data.camera[0]))) + ", " + str(
@@ -808,7 +808,7 @@ def key(data, event, down):
         elif event.key == pygame.K_d: toggle(data, "disp sim data")
         elif event.key == pygame.K_c: toggle(data, "disp car data")
         elif event.key in list(range(pygame.K_0, pygame.K_9 + 1)):
-            followCar(data, int(event.unicode)) 
+            followCar(data, int(event.unicode))
         elif event.key == pygame.K_l: data.followLeader = True
         elif event.key == pygame.K_k: killStalishCars(data)
         elif event.key == pygame.K_p: regenPop(data)
