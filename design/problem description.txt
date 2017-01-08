@@ -1,0 +1,46 @@
+Project Proposal:
+A clone of BoxCar2D, which uses a genetic algorithm to find the best car for a randomly generated terrain. The car simulation will be built using PyBox2D and PyGame.
+
+The car itself is defined by 22 variables. The car will be an 8-sided polygon, with 1 variable defining the density of the car’s body. Each vertex is defined by a vector, consisting of a distance and an angle, thus the shape of the car is defined by 2*8=16 variables. The 2 wheels of the car will be determined by 2 variables each: their radius and density. The 2 wheels will both be attached by their centers to 2 vertices, with the number of vertices that the wheels are separated by determined one last variable.
+
+The terrain will be randomly generated as rectangles of fixed width and random angle, with the top right of a rectangle piece connected to the top left of the next rectangle piece. Constraints will be put on the terrain angles so that the range of angles will vary centered around 0 degrees but size of the range will start out small at the beginning of the terrain and increase towards the end. This way the terrain will be easier to traverse in the beginning and harder towards the end.
+
+The genetic algorithm itself will simply take the distance traveled of each car as its fit function. The distance a car travels on the terrain will be determined by simulating it traveling on the terrain until it does not make any more progress after a certain time limit.
+
+
+
+Competitive Analysis:
+Since this will be a clone of BoxCar2D, the main competitor to this project will be BoxCar2D itself (http://www.boxcar2d.com/). In addition, a BoxCar2D clone called Genetic Cars 2 also exists on the internet (http://rednuht.org/genetic_cars_2/), and on the same website there is a similar project for bipedal walking models (http://rednuht.org/genetic_walkers/). Finally, Cambrian Explosion (http://www.cambrianexplosion.com/) is another genetic algorithm simulator, but instead of cars it has various creatures such as worms, rings, stars and quadrupeds. All these simulations have desirable features that I can implement in my project.
+
+Common features
+- User interface to modify values of genetic algorithm, e.g.
+	- population size
+	- mutation rate
+	- mutation size
+	- selection method
+	- clone top parents
+- User interface to modify simulation
+	- full/wire/none
+	- fps
+- User interface to modify world
+	- terrain shape (random or designed)
+	- world gravity
+- Graph top and average fitness
+
+BoxCar2D
+- Car design page
+- Terrains that have different features that different car designs will be better at
+- Occasional random selection as opposed to roulette wheel selection (so that the genetic algorithm has more diversity and thus doesn’t converge on a local maximum too fast)
+- Tournament selection with user voting, i.e. user can upvote cars to make them win the tournament regardless of score
+- Relevant XKCD (http://imgs.xkcd.com/comics/genetic_algorithms.png)
+
+Genetic Cars 2:
+- Randomly generated terrain with seed input/output
+- Save and load population
+- Simultaneous simulation of all cars in a population
+- Map of terrain with ability to zoom in on different cars
+- View replays
+
+Cambrian Explosion
+- Cool creature types!!!
+- Creature settings
